@@ -1,5 +1,6 @@
-# Team aliases for polyglot developers (currently supports groovy/gradle and angular/gulp) 
-# Developed by Brian Westrich (bw@mcwest.com) and Rob Danek (rdanek@mcwest.com, rdanek@gmail.com) 
+# Team aliases for polyglot developers 
+* (currently supports groovy/gradle and angular/gulp) 
+* Developed by Brian Westrich (bw@mcwest.com) and Rob Danek (rdanek@mcwest.com, rdanek@gmail.com) 
 
 ## Key commands
 ### building with multiple build tools (maven, gradle, grunt, gulp) 
