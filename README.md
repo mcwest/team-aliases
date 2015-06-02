@@ -1,5 +1,5 @@
 # Team aliases for polyglot developers (currently supports groovy/gradle and angular/gulp) 
-# Developed by Brian Westrich (bw@mcwest.com) and Rob Danek (rdanek@mcwest.com) 
+# Developed by Brian Westrich (bw@mcwest.com) and Rob Danek (rdanek@mcwest.com, rdanek@gmail.com) 
 
 ## Key commands
 ### building with multiple build tools (maven, gradle, grunt, gulp) 
@@ -33,5 +33,6 @@
 ## To use git-smart (called by the gsp alias), install it with gem as follows:
 * sudo gem install git-smart
 
-## More git aliases - copy the aliases from gitconfig-aliases to your ~/.gitconfig file.  Then these can be used such as "git co" instead of "git checkout".
+## More git aliases
+* copy the aliases from gitconfig-aliases to your ~/.gitconfig file.  Then these can be used such as "git co" instead of "git checkout".
 
