@@ -38,3 +38,7 @@
 ## More git aliases
 * copy the aliases from gitconfig-aliases to your ~/.gitconfig file.  Then these can be used such as "git co" instead of "git checkout".
 
+## Ideas for contributions
+* We're interested in ideas on how one might do the optional 1st step in the installation instructions 
+(changing the name of the MY_TEAM env var) without having to make local changes to the team-aliases file, as this would make it easier to use the cloned
+git repo and provide pull requests back to it.
