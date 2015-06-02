@@ -27,8 +27,9 @@
       ea: edit team aliases (do a git commit and push to share with team)
       eb: edit bash_profile
       
-## To install
-* add commands in sample-include-in-bash-profile to .bash_profile
+## Installing
+* optional: change the MY_TEAM environment variable in the team-aliases file to a variable name of your choice
+* add commands in sample-include-in-bash-profile to .bash_profile (adjusting accordingly for any changes to the name of the MY_TEAM variable)
 * source ~./bash_profile
 
 ## To use git-smart (called by the gsp alias), install it with gem as follows:
