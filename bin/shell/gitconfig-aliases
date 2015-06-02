@@ -1,0 +1,19 @@
+# Copy whatever aliases you'd like to your ~/.gitconfig file
+# or update your ~/.gitconfig to include this file such as:
+#  [include]
+#     path = ~/dev/fp/team/bin/shell/gitconfig-aliases
+
+[alias]
+  co = checkout
+  ci = commit
+  st = status -sb
+  br = branch
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  type = cat-file -t
+  dump = cat-file -p
+  addall = add --all
+  new-branch = !git checkout -b $1 && git branch --set-upstream-to origin/master
+  amend = commit --amend --no-edit
+  create-pull-request = !git push -u origin \"$(git rev-parse --abbrev-ref HEAD)\" && "echo To create pull request open https://bitbucket.org/mcwest-fp/fp/pull-request/new" && "open https://bitbucket.org/mcwest-fp/fp/pull-request/new"
+  prune-merged = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d"
+

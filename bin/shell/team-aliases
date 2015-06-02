@@ -1,0 +1,143 @@
+
+source $MY_TEAM/bin/shell/git-completion.sh
+source $MY_TEAM/bin/shell/git-prompt.sh
+export PS1='\u@\h:\W$(__git_ps1 " (%s)")\$ '
+
+## START OF TEAM-WIDE ALIASES
+alias ea="vi $MY_TEAM/bin/shell/team-aliases; . $MY_TEAM/bin/shell/team-aliases"
+alias eb="vi ~/.bash_profile ; . ~/.bash_profile"
+
+#unix
+alias ll="ls -la"
+
+#java version
+function j6() {
+        export JAVA_HOME=`/usr/libexec/java_home --version 1.6`
+}
+function j7() {
+        export JAVA_HOME=`/usr/libexec/java_home --version 1.7`
+}
+function j8() {
+        export JAVA_HOME=`/usr/libexec/java_home --version 1.8`
+}
+
+#git
+alias gs='git status -sb'
+#alias pull="git pull"  deprecated, use gsp instead
+alias gsp='git smart-pull'
+alias push='git push'
+
+#gradle
+#use gradle wrapper, per http://gradle.org/docs/current/userguide/gradle_wrapper.html
+export _gradle_exec="j8; ./gradlew"
+alias refresh="$_gradle_exec --refresh-dependencies"
+alias gradletest="$_gradle_exec test"
+alias gradlerun="$_gradle_exec bootrun"
+alias gradlebuild="$_gradle_exec build"
+alias rgo="refresh && go"
+
+function utest() {
+# put preferred build methods first, e.g. gradle before mvn, gulp before grunt
+  if [ -f gulpfile.js ];
+  then
+    gulp test
+  elif [ -f Gruntfile.js ];
+  then
+    grunt jshint test
+  elif [ -f build.gradle ];
+  then
+    gradletest
+  elif [ -f pom.xml ];
+  then
+    mvn test 
+  else
+    echo "Don't know how to unit test current directory."
+    return 1
+  fi
+}
+
+function run() {
+# put preferred app running methods first, e.g. gulp before grunt
+  if [ -f gulpfile.js ];
+  then
+    gulp serve
+  elif [ -f Gruntfile.js ];
+  then
+    grunt serve
+  elif [ -f build.gradle ];
+  then
+    gradlerun
+  else
+    echo "Don't know how to run current directory."
+    return 1
+  fi
+}
+
+function build() {
+# put preferred build methods first, e.g. gradle before mvn, gulp before grunt
+  if [ -f gulpfile.js ];
+  then
+    gulp inject test
+  elif [ -f Gruntfile.js ];
+  then
+    grunt jshint test protractor
+  elif [ -f build.gradle ];
+  then
+    gradlebuild
+  else
+    echo "Don't know how to build current directory."
+    return 1
+  fi
+}
+
+alias sayGood="say -vFiona ok"
+alias  sayBad="say -vFiona oops"
+
+function go() {
+  build
+  if [ "$?" != "0" ]; then
+    echo "[Error] build failed!" 1>&2
+    sayBad
+    return 1
+  fi
+  gebResult=0
+  geb
+  if [ $gebResult != "0" ]; then
+    sayBad
+  else 
+    sayGood
+  fi
+}
+
+function geb() {
+# run geb tests, regardless of which module we are in
+  curdirname=${PWD##*/}
+  gebdir="../geb"
+  #echo changing to $gebdir
+  cd $gebdir
+  git pull
+  echo running geb tests
+  utest
+  gebResult=$?
+  #echo changing back to original dir
+  cd $curdir
+}
+
+
+
+#project tasks
+alias cdteam="cd $MY_TEAM"
+alias goteam="utestdata && goweb"
+
+#web module
+alias cdweb="cd $MY_TEAM/../web"
+alias utestweb="cdweb; utest"
+alias runweb="cdweb; run"
+alias goweb="cdweb; go"
+
+#data module
+alias cddata="cd $MY_TEAM/../data"
+alias utestdata="cddata; utest"
+alias rundata="cddata; run"
+alias godata="cddata; go"
+

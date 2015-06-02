@@ -1,0 +1,14 @@
+# include all statements in this file in your bash-profile
+# note that the first section may need to be modified to match your machine
+
+
+# each dev should modify next lines as needed
+# generic value
+export MY_TEAM=~/path/to/git/repo/containing/aliases
+# e.g. ~/dev/team-foobaz 
+# end of modifiable stuff
+
+
+# this setting is same for whole team
+source "$MY_TEAM/path/to/team-alieses/file/in/git/repo"
+# e.g. "$MY_TEAM/bin/shell/team-aliases"
