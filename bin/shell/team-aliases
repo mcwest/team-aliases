@@ -123,7 +123,7 @@ function geb() {
   cd $curdir
 }
 
-
+## the remainder of this file is very specific to the directory structure of your actual project(s), so consider moving it to a local file that is included here
 
 #project tasks
 alias cdteam="cd $MY_TEAM"
