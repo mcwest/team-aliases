@@ -1,5 +1,5 @@
 # Team aliases for polyglot developers 
-* (currently supports groovy/gradle and angular/gulp) 
+* Currently supports maven/gradle (using Spring Boot) and grunt/gulp (JavaScript)
 * Developed by Brian Westrich (bw@mcwest.com) and Rob Danek (rdanek@mcwest.com, rdanek@gmail.com) 
 
 ## Key commands
